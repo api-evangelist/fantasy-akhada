@@ -1,0 +1,134 @@
+generated: '2026-08-12'
+method: probed
+source: live HTTP probes of every Fantasy Akhada host that still resolves
+note: >-
+  No .well-known document is served on any Fantasy Akhada host. Every path below returned
+  HTTP 200, but each response is the host's single-page-app catch-all - byte-for-byte the
+  same HTML body the site root returns (23,915 bytes on affiliate.fantasyakhada.com, 6,110
+  bytes on app.fantasyakhada.com). A 200 carrying an HTML shell is not a document, so these
+  are recorded as misses and NO WellKnown or SecurityTxt pointer is emitted in apis.yml.
+  The company's canonical host www.fantasyakhada.com could not be probed at all: it is a
+  dangling CNAME to a deleted AWS ap-south-1 load balancer and returns NXDOMAIN.
+hosts:
+- host: https://affiliate.fantasyakhada.com
+  role: marketing/affiliate landing page (only live first-party HTML surface)
+  catch_all: true
+  catch_all_body_bytes: 23915
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    result: miss
+    reason: spa-catch-all-html
+  - path: /.well-known/openid-configuration
+    status: 200
+    result: miss
+    reason: spa-catch-all-html
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    result: miss
+    reason: spa-catch-all-html
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    result: miss
+    reason: spa-catch-all-html
+  - path: /.well-known/api-catalog
+    status: 200
+    result: miss
+    reason: spa-catch-all-html
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    result: miss
+    reason: spa-catch-all-html
+  - path: /.well-known/agent-card.json
+    status: 200
+    result: miss
+    reason: spa-catch-all-html
+  - path: /.well-known/agent.json
+    status: 200
+    result: miss
+    reason: spa-catch-all-html
+- host: https://app.fantasyakhada.com
+  role: React web lobby, static S3/CloudFront build last modified 2023-10-14
+  catch_all: true
+  catch_all_body_bytes: 6110
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    result: miss
+    reason: spa-catch-all-html
+  - path: /.well-known/openid-configuration
+    status: 200
+    result: miss
+    reason: spa-catch-all-html
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    result: miss
+    reason: spa-catch-all-html
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    result: miss
+    reason: spa-catch-all-html
+  - path: /.well-known/api-catalog
+    status: 200
+    result: miss
+    reason: spa-catch-all-html
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    result: miss
+    reason: spa-catch-all-html
+  - path: /.well-known/agent-card.json
+    status: 200
+    result: miss
+    reason: spa-catch-all-html
+  - path: /.well-known/agent.json
+    status: 200
+    result: miss
+    reason: spa-catch-all-html
+- host: https://www.supersixsports.com
+  role: parent company (Super Six Sports Gaming Private Limited) corporate site
+  catch_all: true
+  catch_all_body_bytes: 692
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    result: miss
+    reason: spa-catch-all-html
+  - path: /.well-known/api-catalog
+    status: 200
+    result: miss
+    reason: spa-catch-all-html
+  - path: /.well-known/agent-card.json
+    status: 200
+    result: miss
+    reason: spa-catch-all-html
+  - path: /.well-known/agent.json
+    status: 200
+    result: miss
+    reason: spa-catch-all-html
+  - path: /.well-known/openid-configuration
+    status: 200
+    result: miss
+    reason: spa-catch-all-html
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    result: miss
+    reason: spa-catch-all-html
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    result: miss
+    reason: spa-catch-all-html
+- host: https://www.fantasyakhada.com
+  role: canonical brand website (published on every Fantasy Akhada property)
+  unreachable: true
+  dns: NXDOMAIN
+  dns_detail: >-
+    CNAME to dualstack.supersix-alb-76454354.ap-south-1.elb.amazonaws.com, which itself
+    returns NXDOMAIN - the AWS Application Load Balancer behind the brand's primary
+    hostname has been deleted, leaving a dangling CNAME.
+  documents: []
+summary:
+  hosts_probed: 4
+  documents_found: 0
+  soft_200_catch_all_hosts: 3
+  unreachable_hosts: 1
+  pointer_emitted: false

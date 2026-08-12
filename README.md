@@ -42,5 +42,43 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Fantasy Akhada is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://www.nasdaqprivatemarket.com/
+Fantasy Akhada is an Indian daily-fantasy-sports platform operated by **Super Six Sports Gaming
+Private Limited** (CIN `U72900HR2019PTC083570`) of Gurugram, Haryana. Founded in 2020 by Amit Purohit,
+Sumit Kumar Jha, Sahil Ahuja, Amit Bhardwaj and Ankit Upreti, with cricket commentator Harsha Bhogle as
+brand ambassador, it let users build virtual teams for real cricket, football, kabaddi, basketball and
+hockey fixtures and enter free and cash contests, taking a commission on entry fees.
+
+## API surface
+
+**None.** Fantasy Akhada shipped only as a consumer product — an iOS app, a sideloaded Android APK, and
+a React single-page web lobby. There is no developer program, public API, SDK, webhook surface, or
+developer portal, and none has ever been published.
+
+Contract discovery was run in full on 2026-08-12 and every probe missed:
+
+| Probe | Result |
+|---|---|
+| `www.fantasyakhada.com`, `fantasyakhada.com` | **NXDOMAIN** — `www` is a dangling CNAME to `dualstack.supersix-alb-76454354.ap-south-1.elb.amazonaws.com`, a deleted AWS ap-south-1 load balancer; the apex carries no address record |
+| `api.` / `u.` / `f.` / `gu.` / `gf.` / `scorecard.` / `prediction.` `.fantasyakhada.com` | **NXDOMAIN** — every backend service host named in the company's own JavaScript bundles has been withdrawn from DNS |
+| `node.fantasyakhada.com:4000` | resolves (13.127.255.194) but the socket times out |
+| OpenAPI / Swagger / GraphQL / MCP paths on every live host | HTTP 200, but the single-page-app catch-all HTML, not a spec |
+| `/.well-known/*` (security.txt, openid-configuration, oauth-*, api-catalog, ai-plugin, agent-card, agent) | HTTP 200 catch-all HTML on all three live hosts — **no documents** |
+| A2A agent card | no hit — nothing written, per pipeline policy |
+| npm / PyPI / GitHub organization | no first-party packages, no organization |
+| Google Play `com.fantasyakhada.akhada`, App Store `id1555409649` | HTTP 404 |
+
+Only stale static CloudFront/S3 builds survive: `app.fantasyakhada.com` (last modified 2023-10-14),
+`webview.fantasyakhada.com` (2024-07-11) and `affiliate.fantasyakhada.com`. India's Promotion and
+Regulation of Online Gaming Act 2025 banned real-money online games nationwide in August 2025.
+
+## What is in this repository
+
+- `apis.yml` — company identity, references, and the `x-coverage` record of why this profile is thin
+- `security/fantasy-akhada-domain-security.yml` — probed TLS/HSTS/DNSSEC/CAA/SPF/DMARC posture
+- `well-known/fantasy-akhada-well-known.yml` — the `.well-known` probe, recording an absence
+
+## Links
+
+- Landing page: https://affiliate.fantasyakhada.com/
+- Parent company: https://www.supersixsports.com/
+- LinkedIn: https://in.linkedin.com/company/fantasyakhada

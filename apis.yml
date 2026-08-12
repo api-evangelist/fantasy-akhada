@@ -1,17 +1,56 @@
 aid: fantasy-akhada
 name: Fantasy Akhada
-description: 'Fantasy Akhada is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'Fantasy Akhada is an Indian daily-fantasy-sports platform operated by Super Six Sports Gaming
+  Private Limited (CIN U72900HR2019PTC083570) of Gurugram, Haryana, founded in 2020 by Amit Purohit, Sumit
+  Kumar Jha, Sahil Ahuja, Amit Bhardwaj and Ankit Upreti, with cricket commentator Harsha Bhogle as brand
+  ambassador. Users build virtual teams for real cricket, football, kabaddi, basketball and hockey fixtures
+  and enter free and cash contests, with the platform taking a commission on entry fees; it marketed itself
+  on the lowest commission rates in the category and claimed 3.5 to 4 million registered users. The product
+  shipped only as a consumer iOS app and a sideloaded Android APK plus a React single-page web lobby -
+  there is no developer program, public API, SDK, webhook surface or developer portal of any kind, and
+  none has ever been published. As of the August 2026 probe the brand''s own web presence is broken:
+  www.fantasyakhada.com is a dangling CNAME to a deleted AWS ap-south-1 load balancer, the apex carries
+  no address record, every backend service host referenced by the company''s own JavaScript bundles has
+  been withdrawn from DNS, and only stale static CloudFront/S3 builds remain. India''s Promotion and Regulation
+  of Online Gaming Act 2025 banned real-money online games nationwide in August 2025.'
 url: https://raw.githubusercontent.com/api-evangelist/fantasy-akhada/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
 x-tier: stub
 x-tier-reason: harvest
+x-legal-entity: Super Six Sports Gaming Private Limited
+x-legal-entity-cin: U72900HR2019PTC083570
+x-headquarters: Gurugram, Haryana, India
+x-founded: '2020'
+x-founders:
+- Amit Purohit
+- Sumit Kumar Jha
+- Sahil Ahuja
+- Amit Bhardwaj
+- Ankit Upreti
+x-sibling-brands:
+- VUSport
+- Super Six Sports
+- FanToPark
+x-references:
+- name: 'Fantasy Akhada - Tracxn company profile (legal entity, founders, headcount)'
+  url: https://tracxn.com/d/companies/fantasy-akhada/__eXTVyPJVoODAjw4dMfi0EBkJFV7L9OvygziQDs2jco4
+- name: 'Super Six Sports Gaming Private Limited - The Company Check (CIN U72900HR2019PTC083570)'
+  url: https://www.thecompanycheck.com/company/super-six-sports-gaming-private-limited/U72900HR2019PTC083570
+- name: 'Fantasy Akhada - Crunchbase company profile'
+  url: https://www.crunchbase.com/organization/fantasy-akhada
 specificationVersion: '0.20'
 created: '2026-08-12'
 modified: '2026-08-12'
 tags:
 - Company
+- Fantasy Sports
+- Sports
+- Online Gaming
+- Consumer Mobile
+- Cricket
+- India
+- Entertainment
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -19,5 +58,56 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/fantasy-akhada-domain-security.yml
 - type: Website
-  url: https://www.nasdaqprivatemarket.com/
+  url: https://affiliate.fantasyakhada.com/
+- type: ParentCompany
+  url: https://www.supersixsports.com/
+- type: Twitter
+  url: https://twitter.com/FantasyAkhada
+- type: LinkedIn
+  url: https://in.linkedin.com/company/fantasyakhada
+- type: Facebook
+  url: https://www.facebook.com/FantasyAkhada/
+- type: Instagram
+  url: https://www.instagram.com/fantasyakhada/
+- type: YouTube
+  url: https://www.youtube.com/channel/UCtkKN933dPJN9dA74U3KC_w
+x-enrichment:
+  date: '2026-08-12'
+  status: minimal
+  artifacts_added: 2
+  pass: local-v1
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    Fantasy Akhada shipped only a consumer fantasy-sports app (iOS, sideloaded Android APK,
+    React web lobby) and never published a developer portal, API, SDK or webhook surface -
+    and its canonical host www.fantasyakhada.com no longer resolves at all, being a dangling
+    CNAME to a deleted AWS ap-south-1 load balancer, with every backend service host named in
+    the company's own JavaScript bundles likewise withdrawn from DNS.
+  evidence:
+  - url: https://www.fantasyakhada.com/
+    status: 0
+    note: >-
+      DNS NXDOMAIN - CNAME to dualstack.supersix-alb-76454354.ap-south-1.elb.amazonaws.com,
+      which is itself NXDOMAIN (deleted load balancer)
+  - url: https://api.fantasyakhada.com/
+    status: 0
+    note: DNS NXDOMAIN
+  - url: https://affiliate.fantasyakhada.com/.well-known/security.txt
+    status: 200
+    note: soft 200 - returns the site's 23,915-byte marketing HTML catch-all, not a document
+  - url: https://app.fantasyakhada.com/openapi.json
+    status: 200
+    note: soft 200 - returns the SPA's 6,110-byte HTML shell, not a spec
+  - url: https://app.fantasyakhada.com/.well-known/agent-card.json
+    status: 200
+    note: soft 200 - HTML shell, rejected as an agent card; nothing written to a2a/
+  - url: https://play.google.com/store/apps/details?id=com.fantasyakhada.akhada
+    status: 404
+  - url: https://apps.apple.com/in/app/fantasy-akhada/id1555409649
+    status: 404
+  checked: '2026-08-12'
