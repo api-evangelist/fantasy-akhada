@@ -64,43 +64,80 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Fantasy Akhada is an Indian daily-fantasy-sports platform operated by **Super Six Sports Gaming
-Private Limited** (CIN `U72900HR2019PTC083570`) of Gurugram, Haryana. Founded in 2020 by Amit Purohit,
-Sumit Kumar Jha, Sahil Ahuja, Amit Bhardwaj and Ankit Upreti, with cricket commentator Harsha Bhogle as
-brand ambassador, it let users build virtual teams for real cricket, football, kabaddi, basketball and
-hockey fixtures and enter free and cash contests, taking a commission on entry fees.
+Fantasy Akhada is an Indian daily-fantasy-sports platform operated by Super Six Sports Gaming Private Limited (CIN U72900HR2019PTC083570) of Gurugram, Haryana, founded in 2020 by Amit Purohit, Sumit Kumar Jha, Sahil Ahuja, Amit Bhardwaj and Ankit Upreti, with cricket commentator Harsha Bhogle as brand ambassador. Users build virtual teams for real cricket, football, kabaddi, basketball and hockey fixtures and enter free and cash contests, with the platform taking a commission on entry fees; it marketed itself on the lowest commission rates in the category and claimed 3.5 to 4 million registered users. The product shipped only as a consumer iOS app and a sideloaded Android APK plus a React single-page web lobby - there is no developer program, public API, SDK, webhook surface or developer portal of any kind, and none has ever been published. As of the August 2026 probe the brand's own web presence is broken: www.fantasyakhada.com is a dangling CNAME to a deleted AWS ap-south-1 load balancer, the apex carries no address record, every backend service host referenced by the company's own JavaScript bundles has been withdrawn from DNS, and only stale static CloudFront/S3 builds remain. India's Promotion and Regulation of Online Gaming Act 2025 banned real-money online games nationwide in August 2025.
 
-## API surface
+**Areas:** Company · Fantasy Sports · Sports · Online Gaming · Consumer Mobile · Cricket · India · Entertainment
 
-**None.** Fantasy Akhada shipped only as a consumer product — an iOS app, a sideloaded Android APK, and
-a React single-page web lobby. There is no developer program, public API, SDK, webhook surface, or
-developer portal, and none has ever been published.
+## Fantasy Akhada on APIs.io
 
-Contract discovery was run in full on 2026-08-12 and every probe missed:
+Everything profiled for Fantasy Akhada is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/fantasy-akhada/](https://apis.io/providers/fantasy-akhada/)** — or go straight to one of the APIs or properties below.
 
-| Probe | Result |
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Fantasy Akhada Domain Security](https://apis.io/security/fantasy-akhada/fantasy-akhada-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://affiliate.fantasyakhada.com/)
+- [Blog](https://affiliate.fantasyakhada.com/blog/)
+
+## API Evangelist rating
+
+**Kin Score 3.6** — minimal · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
 |---|---|
-| `www.fantasyakhada.com`, `fantasyakhada.com` | **NXDOMAIN** — `www` is a dangling CNAME to `dualstack.supersix-alb-76454354.ap-south-1.elb.amazonaws.com`, a deleted AWS ap-south-1 load balancer; the apex carries no address record |
-| `api.` / `u.` / `f.` / `gu.` / `gf.` / `scorecard.` / `prediction.` `.fantasyakhada.com` | **NXDOMAIN** — every backend service host named in the company's own JavaScript bundles has been withdrawn from DNS |
-| `node.fantasyakhada.com:4000` | resolves (13.127.255.194) but the socket times out |
-| OpenAPI / Swagger / GraphQL / MCP paths on every live host | HTTP 200, but the single-page-app catch-all HTML, not a spec |
-| `/.well-known/*` (security.txt, openid-configuration, oauth-*, api-catalog, ai-plugin, agent-card, agent) | HTTP 200 catch-all HTML on all three live hosts — **no documents** |
-| A2A agent card | no hit — nothing written, per pipeline policy |
-| npm / PyPI / GitHub organization | no first-party packages, no organization |
-| Google Play `com.fantasyakhada.akhada`, App Store `id1555409649` | HTTP 404 |
+| Discoverability | 44.6 |
+| Contract quality | 0.0 |
+| Contract governance | 0.0 |
+| Operational transparency | 0.0 |
+| Developer ergonomics | 2.4 |
+| Access clarity | 0.0 |
 
-Only stale static CloudFront/S3 builds survive: `app.fantasyakhada.com` (last modified 2023-10-14),
-`webview.fantasyakhada.com` (2024-07-11) and `affiliate.fantasyakhada.com`. India's Promotion and
-Regulation of Online Gaming Act 2025 banned real-money online games nationwide in August 2025.
+**Agent readiness 0.0** — human-only
 
-## What is in this repository
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
 
-- `apis.yml` — company identity, references, and the `x-coverage` record of why this profile is thin
-- `security/fantasy-akhada-domain-security.yml` — probed TLS/HSTS/DNSSEC/CAA/SPF/DMARC posture
-- `well-known/fantasy-akhada-well-known.yml` — the `.well-known` probe, recording an absence
+**Regulatory alignment 5.9** — Horizontal (data, software, accessibility, platform)
 
-## Links
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/fantasy-akhada/](https://apis.io/providers/fantasy-akhada/).
 
-- Landing page: https://affiliate.fantasyakhada.com/
-- Parent company: https://www.supersixsports.com/
-- LinkedIn: https://in.linkedin.com/company/fantasyakhada
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Fantasy Akhada: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/fantasy-akhada/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
